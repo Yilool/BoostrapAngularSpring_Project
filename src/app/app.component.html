@@ -1,4 +1,13 @@
-<nav class="navbar" style="background-color: #e3f2fd">
-    <img class="rounded float-left" src="../assets/Logo.png" alt="logo">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-</nav>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/product']">Product</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Custom</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Employee</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

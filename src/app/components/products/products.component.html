@@ -1,0 +1,44 @@
+<h1 class="display-5 text-center initialism">CRUD Product</h1>
+<button type="submit" class="btn btn-info" (click)="onGets()">Obtener Productos</button>
+<br>
+<br>
+<form #productsForm="ngForm">
+    <div class="form-group">
+        <label for="prdId">Id</label>
+        <input type="text" [(ngModel)]="product.prdId" class="form-control" id="prdId" name="prdId"
+            placeholder="Enter product id" #prdId="ngModel" />
+    </div>
+    <div class="form-group">
+        <label for="prdName">Name</label>
+        <input type="text" [(ngModel)]="product.prdName" class="form-control" id="prdName" name="prdName"
+            placeholder="Enter product name" #prdName="ngModel" />
+    </div>
+    <div class="form-group">
+        <label for="prdPrice">Price</label>
+        <input type="text" [(ngModel)]="product.prdPrice" class="form-control" id="prdPrice" name="prdPrice"
+            placeholder="Enter product price" #prdPrice="ngModel" />
+    </div>
+    <button type="submit" class="btn btn-info" (click)="onPost()">Crear Producto</button>
+    <button type="submit" class="btn btn-info" (click)="onGet(product.prdId)">Obtener Producto</button>
+    <button type="submit" class="btn btn-info" (click)="onDel(product.prdId)">Borrar Producto</button>
+</form>
+<br>
+<br>
+<div *ngIf="!loading">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prd of products">
+                <th scope="row">{{ prd.prdId }}</th>
+                <td>{{ prd.prdName }}</td>
+                <td>{{ prd.prdPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
