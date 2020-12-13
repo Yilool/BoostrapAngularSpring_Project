@@ -9,7 +9,8 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OperationComponent } from './components/operation/operation.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { FormsModule } from '@angular/forms';
     CustomersComponent,
     EmployeesComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    OperationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

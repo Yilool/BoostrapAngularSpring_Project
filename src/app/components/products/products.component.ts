@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/interface/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,11 +9,12 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  productFormContent: FormGroup;
   products: Product[];
   product: Product;
   loading: boolean
-  
-  constructor( private prdService: ProductService ) {
+
+  constructor(private formBuilder: FormBuilder, private prdService: ProductService) {
     this.product = {
       prdName: null,
       prdPrice: null,
@@ -21,12 +23,19 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.productFormContent = this.formBuilder.group({
+      id: [''],
+      nombre: [''],
+      precio: [''],
+    });
   }
 
   async onPost() {
-    this.product.prdPrice.valueOf();
-    //await this.prdService.postProduct(this.product)
-    console.log(this.product);
+    this.product.prdName = this.productFormContent.get('nombre').value;
+    this.product.prdPrice = +this.productFormContent.get('precio').value;
+    let le = this.prdService.postProduct(this.product)
+    console.log(le);
+    this.loading = false;
   }
 
   async onGets() {
@@ -35,13 +44,17 @@ export class ProductsComponent implements OnInit {
     this.loading = false;
   }
 
-  async onGet(id: number) {
+  async onGet() {
+    let id = this.productFormContent.get('id').value
     this.product = await this.prdService.getProduct(id);
     console.log(this.product)
+    this.loading = false;
   }
 
-  async onDel(id: number) {
+  async onDel() {
+    let id = this.productFormContent.get('id').value
     this.product = await this.prdService.delProduct(id);
     console.log(this.product)
+    this.loading = false;
   }
 }

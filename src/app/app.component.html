@@ -1,13 +1,120 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/product']">Product</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Custom</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Employee</a>
-  </li>
-</ul>
+<!-- Principal navbar with logo, search bar, social media and log -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Logo of the web site -->
+  <a class="navbar-brand" href=""><i class="fas fa-blog fa-lg"></i></a>
+  <!-- Search bar -->
+  <form class="form-inline my-2 my-lg-0">
+    <div class="input-group input-group-sm">
+      <!-- Search input -->
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <!-- Search button -->
+      <button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-search fa-xs"></i>
+      </button>
+    </div>
+  </form>
+  <!-- Social media toggler for @media smaller than lg-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#socialMedia"
+    aria-controls="socialMedia" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-hashtag fa-lg"></i>
+  </button>
+  <!-- Social media -->
+  <div class="collapse navbar-collapse" id="socialMedia">
+    <ul class="navbar-nav">
+      <!-- Social media links and logo -->
+      <li class="nav-item px-5">
+        <a class="nav-link active" href="facebook.com"><i class="fab fa-facebook fa-lg"></i></a>
+      </li>
+      <li class="nav-item px-5">
+        <a class="nav-link active" href="twitter.com"><i class="fab fa-twitter fa-lg"></i></a>
+      </li>
+      <li class="nav-item px-5">
+        <a class="nav-link active" href="instagram.com"><i class="fab fa-instagram-square fa-lg"></i></a>
+      </li>
+    </ul>
+  </div>
 
-<router-outlet></router-outlet>
+  <!-- Log/Sign in -->
+  <!-- User button -->
+  <a class="navbar-brand" href="#"><i class="fas fa-user fa-lg"></i></a>
+  <!-- log/Sing link, only available for @media greather than md-->
+  <button type="button" class="btn btn-link aparece d-none d-lg-block">Log/Sign</button>
+</nav>
+
+<!-- Chaging components of the page -->
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<!-- Footer's Color -->
+<footer class="bg-dark">
+  <!-- Footer element container -->
+  <div class="container">
+    <!-- Element in row-->
+    <div class="row ">
+      <!-- Footer's Title, footer link and copyright -->
+      <div class="col-md-4 text-center text-md-left">
+        <!-- Padding top and bottom 0 -->
+        <div class="py-0">
+          <!-- Title -->
+          <h3 class="my-4 text-white">About<span class="mx-2 font-italic text-success">Jacaranda's Project</span></h3>
+          <!-- Link -->
+          <p class="footer-links font-weight-bold">
+            <a class="text-warning" href="">Home</a> |
+            <a class="text-warning" href="**">Blog</a> |
+            <a class="text-warning" href="**">About</a> |
+            <a class="text-warning text-capitalize" href="**">Contact us</a>
+          </p>
+          <!-- Copyright -->
+          <p class="text-light py-4 mb-4">&copy;2020 BoostrapAngularSpring Jacaranda's Project</p>
+        </div>
+      </div>
+      <!-- Contact us ways -->
+      <div class="col-md-4 text-white text-center text-md-left ">
+        <div class="py-2 my-4">
+          <span class="font-weight-bold text-warning">Contact Way</span>
+          <!-- Address -->
+          <div>
+            <p class="text-white">
+              <i class="fa fa-map-marker fa-lg mx-2"></i>
+              Calle Diamantino García, nº 40 Brenes - 41310
+            </p>
+          </div>
+          <!-- Phone -->
+          <div>
+            <p>
+              <i class="fa fa-phone fa-lg mx-2"></i>
+              Tel. 955 62 25 85
+            </p>
+          </div>
+          <!-- Email -->
+          <div>
+            <p>
+              <i class="fa fa-envelope fa-lg mx-2"></i>
+              <a href="**">jacaies@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- About -->
+      <div class="col-md-4 text-white my-4 text-center text-md-left ">
+        <!-- Brief description -->
+        <span class="font-weight-bold text-warning">About the Project</span>
+        <p class="text-danger my-2">
+          Project about a database based on a company with the data of its products,
+          employees and customers.
+          You can made CRUD operation on this data.
+        </p>
+        <!-- Social media -->
+        <span class="font-weight-bold text-warning">RRSS</span>
+        <div class="py-2">
+          <a href="facebook.com"><i class="fab fa-facebook fa-2x text-primary mx-3"></i></a>
+          <a href="#"><i class="fab fa-instagram-square fa-2x text-success mx-3"></i></a>
+          <a href="#"><i class="fab fa-twitter fa-2x text-info mx-3"></i></a>
+          <a href="#"><i class="fab fa-youtube fa-2x text-danger mx-3"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

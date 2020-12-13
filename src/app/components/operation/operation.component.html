@@ -1,0 +1,26 @@
+<!-- Navbar with breadcrumb -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar" aria-label="breadcrumb ">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
+            <li class="breadcrumb-item"><a href="operation">Operation Page</a></li>
+        </ol>
+    </nav>
+</nav>
+<!-- Tabs of entity to do the operations -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="operation/product">Product</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="operation/employee">Employee</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="operation/custom">Custom</a>
+    </li>
+</ul>
+
+<!-- Chaging components of the page -->
+<div>
+    <router-outlet></router-outlet>
+</div>
