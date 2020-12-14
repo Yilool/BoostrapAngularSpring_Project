@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../interface/employee';
 
@@ -6,14 +6,20 @@ import { Employee } from '../interface/employee';
   providedIn: 'root'
 })
 export class EmployeeService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  
   private employeeRoute: string;
 
   constructor( private http: HttpClient ) { 
-    this.employeeRoute = 'http://localhost:8080/empresa/';
+    this.employeeRoute = 'http://localhost:8080/empresa/employee';
   }
 
   public postEmployee(employeeParam: Employee) {
-    return this.http.post<Employee>(this.employeeRoute, employeeParam);
+    return this.http.post<Employee>(this.employeeRoute, employeeParam, this.httpOptions);
   }
 
   public async getAllEmployee(): Promise<any> {

@@ -17,18 +17,15 @@
     <form [formGroup]="customFormContent">
         <div class="form-group">
             <label class="font-weight-bold" for="prdId">Id</label>
-            <input formControlName="id" type="text"  class="form-control"
-                placeholder="Enter custom id">
+            <input formControlName="id" type="text" class="form-control" placeholder="Enter custom id">
         </div>
         <div class="form-group">
             <label class="font-weight-bold" for="prdName">Name</label>
-            <input formControlName="nombre" type="text"  class="form-control"
-                placeholder="Enter custom name">
+            <input formControlName="nombre" type="text" class="form-control" placeholder="Enter custom name">
         </div>
         <div class="form-group">
             <label class="font-weight-bold" for="prdPrice">Price</label>
-            <input formControlName="surname" type="text"  class="form-control"
-                placeholder="Enter product id">
+            <input formControlName="surname" type="text" class="form-control" placeholder="Enter product id">
         </div>
 
         <div class="btn-group flex-wrap">
@@ -42,16 +39,16 @@
 <!-- Result container -->
 <div class="container">
     <div *ngIf="!loading">
-    <table class="table table-striped table-bordered table-hover table-dark">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Products</th>
-            </tr>
-        </thead>
-        <tbody>
+        <table class="table table-striped table-bordered table-hover table-dark">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Products</th>
+                </tr>
+            </thead>
+            <tbody>
                 <tr *ngFor="let prd of products">
                     <th scope="row">{{ prd.prdId }}</th>
                     <td>{{ prd.prdName }}</td>
@@ -59,6 +56,6 @@
                     <td>{{ prd.prdPrice }}</td>
                 </tr>
             </tbody>
-    </table>
+        </table>
     </div>
 </div>

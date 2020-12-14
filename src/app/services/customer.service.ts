@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../interface/custom';
 
@@ -6,14 +6,20 @@ import { Customer } from '../interface/custom';
   providedIn: 'root'
 })
 export class CustomerService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  
   private customRoute: string;
 
   constructor( private http: HttpClient ) { 
-    this.customRoute = 'http://localhost:8080/empresa/';
+    this.customRoute = 'http://localhost:8080/empresa/custom';
   }
 
   public postcustom(customParam: Customer) {
-    return this.http.post<Customer>(this.customRoute, customParam);
+    return this.http.post<Customer>(this.customRoute, customParam, this.httpOptions);
   }
 
   public async getAllcustom(): Promise<any> {

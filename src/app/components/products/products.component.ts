@@ -30,13 +30,22 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  async onPost() {
+  onPost() {
     this.product.prdName = this.productFormContent.get('nombre').value;
     this.product.prdPrice = +this.productFormContent.get('precio').value;
-    let le = this.prdService.postProduct(this.product)
-    console.log(le);
+    
+    console.log(this.product);
+    
+    this.prdService.postProduct(this.product).subscribe((response) => {
+      alert('Producto creado!');
+      console.log(response);
+
+      this.productFormContent.reset();
+    });
+    
     this.loading = false;
   }
+  
 
   async onGets() {
     this.products = await this.prdService.getAllProduct()
@@ -53,7 +62,9 @@ export class ProductsComponent implements OnInit {
 
   async onDel() {
     let id = this.productFormContent.get('id').value
+    alert(`¿Seguro que desea borrar el producto con id ${id}?`);
     this.product = await this.prdService.delProduct(id);
+    alert('!Producto Borrado!');
     console.log(this.product)
     this.loading = false;
   }
