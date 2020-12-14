@@ -14,7 +14,13 @@ export class CustomersComponent implements OnInit {
   custom: Customer;
   loading: boolean
 
-  constructor(private formBuilder: FormBuilder, private cusService: CustomerService) {}
+  constructor(private formBuilder: FormBuilder, private cusService: CustomerService) {
+    this.custom = {
+      cusName: null,
+      cusSurname: null,
+    };
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.customFormContent = this.formBuilder.group({
@@ -24,50 +30,38 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.productFormContent = this.formBuilder.group({
-      id: [''],
-      nombre: [''],
-      precio: [''],
-    });
-  }
-
   onPost() {
-    this.product.prdName = this.productFormContent.get('nombre').value;
-    this.product.prdPrice = +this.productFormContent.get('precio').value;
+    this.custom.cusName = this.customFormContent.get('nombre').value;
+    this.custom.cusSurname = this.customFormContent.get('apellido').value;
     
-    console.log(this.product);
+    console.log(this.custom);
     
-    this.prdService.postProduct(this.product).subscribe((response) => {
-      alert('Producto creado!');
-      console.log(response);
-
-      this.productFormContent.reset();
-    });
-    
+    this.cusService.postcustom(this.custom)
+    alert('!Cliente Creado!');
     this.loading = false;
+    this.customFormContent.reset();
   }
   
 
   async onGets() {
-    this.products = await this.prdService.getAllProduct()
-    console.log(this.products)
+    this.customers = await this.cusService.getAllcustom();
+    console.log(this.customers)
     this.loading = false;
   }
 
   async onGet() {
-    let id = this.productFormContent.get('id').value
-    this.product = await this.prdService.getProduct(id);
-    console.log(this.product)
+    let id = this.customFormContent.get('id').value
+    this.custom = await this.cusService.getcustom(id);
+    console.log(this.custom)
     this.loading = false;
   }
 
   async onDel() {
-    let id = this.productFormContent.get('id').value
-    alert(`¿Seguro que desea borrar el producto con id ${id}?`);
-    this.product = await this.prdService.delProduct(id);
-    alert('!Producto Borrado!');
-    console.log(this.product)
+    let id = this.customFormContent.get('id').value
+    alert(`¿Seguro que desea borrar el cliente con id ${id}?`);
+    this.custom = await this.cusService.delcustom(id);
+    alert('!Cliente Borrado!');
+    console.log(this.custom)
     this.loading = false;
   }
 }

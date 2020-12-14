@@ -24,15 +24,15 @@
             <input formControlName="nombre" type="text" class="form-control" placeholder="Enter custom name">
         </div>
         <div class="form-group">
-            <label class="font-weight-bold" for="prdPrice">Price</label>
-            <input formControlName="surname" type="text" class="form-control" placeholder="Enter product id">
+            <label class="font-weight-bold" for="prdPrice">Surname</label>
+            <input formControlName="apellido" type="text" class="form-control" placeholder="Enter custom surname">
         </div>
 
         <div class="btn-group flex-wrap">
-            <!-- <button type="submit" class="btn btn-info" (click)="onPost()">Crear Cliente</button>
-            <button type="submit" class="btn btn-info" (click)="onGets()">Obtener Clientes</button>
-            <button type="submit" class="btn btn-info" (click)="onGet(product.prdId)">Obtener Cliente</button>
-            <button type="submit" class="btn btn-info" (click)="onDel(product.prdId)">Borrar Cliente</button> -->
+            <button type="submit" class="btn btn-info" (click)="onPost()">Crear Cliente</button>
+            <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Clientes</button>
+            <button type="submit" class="btn btn-info" (click)="onGet()">Obtener Cliente</button>
+            <button type="submit" class="btn btn-info" (click)="onDel()">Borrar Cliente</button>
         </div>
     </form>
 </div>
@@ -45,15 +45,20 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Surname</th>
-                    <th scope="col">Products</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let prd of products">
-                    <th scope="row">{{ prd.prdId }}</th>
-                    <td>{{ prd.prdName }}</td>
-                    <td>{{ prd.prdPrice }}</td>
-                    <td>{{ prd.prdPrice }}</td>
+                <!-- One custom arrays -->
+                <tr>
+                    <th scope="row">{{ custom.cusId }}</th>
+                    <td>{{ custom.cusName }}</td>
+                    <td>{{ custom.cusSurname }}</td>
+                </tr>
+                <!-- Many customers arrays -->
+                <tr *ngFor="let cus of customers">
+                    <th scope="row">{{ cus.cusId }}</th>
+                    <td>{{ cus.cusName }}</td>
+                    <td>{{ cus.cusSurname }}</td>
                 </tr>
             </tbody>
         </table>
