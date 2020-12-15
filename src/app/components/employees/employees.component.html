@@ -24,13 +24,13 @@
             <input formControlName="nombre" type="text" class="form-control" placeholder="Enter employer name">
         </div>
         <div class="form-group">
-            <label class="font-weight-bold" for="prdPrice">Price</label>
+            <label class="font-weight-bold" for="prdPrice">Surname</label>
             <input formControlName="apellido" type="text" class="form-control" placeholder="Enter employer surname">
         </div>
 
         <div class="btn-group flex-wrap">
             <button type="submit" class="btn btn-info" (click)="onPost()">Crear Empleado</button>
-            <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Empleado</button>
+            <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Empleados</button>
             <button type="submit" class="btn btn-info" (click)="onGet()">Obtener Empleado</button>
             <button type="submit" class="btn btn-info" (click)="onDel()">Borrar Empleado</button>
         </div>
@@ -50,15 +50,15 @@
             <tbody>
                 <!-- One product arrays -->
                 <tr>
-                    <th scope="row">{{ employee.empId }}</th>
+                    <th scope="row">{{ employee.id }}</th>
                     <td>{{ employee.empName }}</td>
                     <td>{{ employee.empSurname }}</td>
                 </tr>
                 <!-- Many product arrays -->
-                <tr *ngFor="let product of products">
-                    <th scope="row">{{ employee.empId }}</th>
-                    <td>{{ employee.empName }}</td>
-                    <td>{{ employee.empSurname }}</td>
+                <tr *ngFor="let emp of employees">
+                    <th scope="row">{{ emp.id }}</th>
+                    <td>{{ emp.empName }}</td>
+                    <td>{{ emp.empSurname }}</td>
                 </tr>
             </tbody>
         </table>

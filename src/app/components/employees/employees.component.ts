@@ -33,9 +33,12 @@ export class EmployeesComponent implements OnInit {
   onPost() {
     this.employee.empName = this.employeeFormContent.get('nombre').value;
     this.employee.empSurname = this.employeeFormContent.get('apellido').value;
-    console.log(this.employee);
-    this.empService.postEmployee(this.employee);
-    alert('Empleado creado!');
+
+    this.empService.postEmployee(this.employee).subscribe((response) => {
+      alert('Empleado creado!');
+      console.log(response);
+    });
+    
     this.loading = false;
     this.employeeFormContent.reset();
   }
@@ -43,23 +46,26 @@ export class EmployeesComponent implements OnInit {
 
   async onGets() {
     this.employees = await this.empService.getAllEmployee()
-    console.log(this.employees)
     this.loading = false;
+    this.employeeFormContent.reset();
   }
 
   async onGet() {
     let id = this.employeeFormContent.get('id').value
     this.employee = await this.empService.getEmployee(id);
-    console.log(this.employee)
     this.loading = false;
+    this.employeeFormContent.reset();
   }
 
-  async onDel() {
+  onDel() {
     let id = this.employeeFormContent.get('id').value
     alert(`¿Seguro que desea borrar el empleado con id ${id}?`);
-    this.employee = await this.empService.delemployee(id);
-    alert('!Empleado Borrado!');
-    console.log(this.employee)
+    this.empService.delEmployee(id).subscribe((response) => {
+      alert('!Empleado Borrado!');
+      console.log(response);
+    });
+    
     this.loading = false;
+    this.employeeFormContent.reset();
   }
 }

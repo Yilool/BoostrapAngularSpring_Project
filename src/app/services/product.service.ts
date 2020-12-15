@@ -35,8 +35,8 @@ export class ProductService {
     return product;
   }
 
-  public async delProduct(prdId: number): Promise<any> {
-    let product: any = await this.http.delete(this.productRoute + "/" + prdId).toPromise();
+  public delProduct(prdId: number): Observable<Product> {
+    let product: any = this.http.delete(this.productRoute + "/" + prdId, { responseType: 'text' });
 
     return product;
   }

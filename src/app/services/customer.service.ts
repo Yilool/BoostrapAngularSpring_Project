@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Customer } from '../interface/custom';
 
 @Injectable({
@@ -18,7 +19,7 @@ export class CustomerService {
     this.customRoute = 'http://localhost:8080/empresa/custom';
   }
 
-  public postcustom(customParam: Customer) {
+  public postcustom(customParam: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.customRoute, customParam, this.httpOptions);
   }
 
@@ -28,14 +29,14 @@ export class CustomerService {
     return customs;
   }
 
-  public async getcustom(prdId: number): Promise<any> {
-    let custom: any = await this.http.get(this.customRoute + "/" + prdId).toPromise();
+  public async getcustom(cusId: number): Promise<any> {
+    let custom: any = await this.http.get(this.customRoute + "/" + cusId).toPromise();
 
     return custom;
   }
 
-  public async delcustom(prdId: number): Promise<any> {
-    let custom: any = await this.http.delete(this.customRoute + "/" + prdId).toPromise();
+  public delcustom(cusId: number): Observable<Customer> {
+    let custom: any = this.http.delete(this.customRoute + "/" + cusId, { responseType: 'text' });
 
     return custom;
   }

@@ -1,7 +1,5 @@
-import { Product } from './product';
-
 export interface Employee {
+    id?: number;
     empName: string;
     empSurname: string;
-    empProducts?: Product[];
 }

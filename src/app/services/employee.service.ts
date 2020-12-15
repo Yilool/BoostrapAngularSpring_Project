@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Employee } from '../interface/employee';
 
 @Injectable({
@@ -18,7 +19,7 @@ export class EmployeeService {
     this.employeeRoute = 'http://localhost:8080/empresa/employee';
   }
 
-  public postEmployee(employeeParam: Employee) {
+  public postEmployee(employeeParam: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.employeeRoute, employeeParam, this.httpOptions);
   }
 
@@ -28,14 +29,14 @@ export class EmployeeService {
     return employees;
   }
 
-  public async getEmployee(prdId: number): Promise<any> {
-    let employee: any = await this.http.get(this.employeeRoute + "/" + prdId).toPromise();
+  public async getEmployee(empId: number): Promise<any> {
+    let employee: any = await this.http.get(this.employeeRoute + "/" + empId).toPromise();
 
     return employee;
   }
 
-  public async delemployee(prdId: number): Promise<any> {
-    let employee: any = await this.http.delete(this.employeeRoute + "/" + prdId).toPromise();
+  public delEmployee(empId: number): Observable<Employee> {
+    let employee: any = this.http.delete(this.employeeRoute + "/" + empId, { responseType: 'text' });
 
     return employee;
   }

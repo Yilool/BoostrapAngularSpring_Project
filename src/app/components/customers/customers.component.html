@@ -50,13 +50,13 @@
             <tbody>
                 <!-- One custom arrays -->
                 <tr>
-                    <th scope="row">{{ custom.cusId }}</th>
+                    <th scope="row">{{ custom.id }}</th>
                     <td>{{ custom.cusName }}</td>
                     <td>{{ custom.cusSurname }}</td>
                 </tr>
                 <!-- Many customers arrays -->
                 <tr *ngFor="let cus of customers">
-                    <th scope="row">{{ cus.cusId }}</th>
+                    <th scope="row">{{ cus.id }}</th>
                     <td>{{ cus.cusName }}</td>
                     <td>{{ cus.cusSurname }}</td>
                 </tr>

@@ -34,10 +34,11 @@ export class CustomersComponent implements OnInit {
     this.custom.cusName = this.customFormContent.get('nombre').value;
     this.custom.cusSurname = this.customFormContent.get('apellido').value;
     
-    console.log(this.custom);
+    this.cusService.postcustom(this.custom).subscribe((response) => {
+      alert('!Cliente Creado!');
+      console.log(response);
+    });
     
-    this.cusService.postcustom(this.custom)
-    alert('!Cliente Creado!');
     this.loading = false;
     this.customFormContent.reset();
   }
@@ -45,23 +46,25 @@ export class CustomersComponent implements OnInit {
 
   async onGets() {
     this.customers = await this.cusService.getAllcustom();
-    console.log(this.customers)
     this.loading = false;
+    this.customFormContent.reset();
   }
 
   async onGet() {
     let id = this.customFormContent.get('id').value
     this.custom = await this.cusService.getcustom(id);
-    console.log(this.custom)
     this.loading = false;
+    this.customFormContent.reset();
   }
 
-  async onDel() {
+  onDel() {
     let id = this.customFormContent.get('id').value
     alert(`¿Seguro que desea borrar el cliente con id ${id}?`);
-    this.custom = await this.cusService.delcustom(id);
-    alert('!Cliente Borrado!');
-    console.log(this.custom)
+    this.cusService.delcustom(id).subscribe((response) => {
+      alert('!Cliente Borrado!');
+      console.log(response);
+    });
     this.loading = false;
+    this.customFormContent.reset();
   }
 }

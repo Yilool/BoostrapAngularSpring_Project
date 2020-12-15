@@ -50,15 +50,15 @@
             <tbody>
                 <!-- One product arrays -->
                 <tr>
-                    <th scope="row">{{ product.prdId }}</th>
+                    <th scope="row">{{ product.id }}</th>
                     <td>{{ product.prdName }}</td>
                     <td>{{ product.prdPrice }}</td>
                 </tr>
                 <!-- Many product arrays -->
-                <tr *ngFor="let product of products">
-                    <th scope="row">{{ product.prdId }}</th>
-                    <td>{{ product.prdName }}</td>
-                    <td>{{ product.prdPrice }}</td>
+                <tr *ngFor="let prd of products">
+                    <th scope="row">{{ prd.id }}</th>
+                    <td>{{ prd.prdName }}</td>
+                    <td>{{ prd.prdPrice }}</td>
                 </tr>
             </tbody>
         </table>
