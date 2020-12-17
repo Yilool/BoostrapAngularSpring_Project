@@ -10,28 +10,37 @@
 </nav>
 <!-- Form container -->
 <div class="container py-3">
+    <!-- Section title -->
     <h1 class="text-center">Custom<small> CRUD</small></h1>
     <div class="btn-group my-2" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info" [routerLink]="['/operation']">Volver</button>
     </div>
     <form [formGroup]="customFormContent">
+        <!-- Id input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdId">Id</label>
             <input formControlName="id" type="text" class="form-control" placeholder="Enter custom id">
         </div>
+        <!-- Name input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdName">Name</label>
             <input formControlName="nombre" type="text" class="form-control" placeholder="Enter custom name">
         </div>
+        <!-- Surname input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdPrice">Surname</label>
             <input formControlName="apellido" type="text" class="form-control" placeholder="Enter custom surname">
         </div>
-
+        
+        <!-- Button group -->
         <div class="btn-group flex-wrap">
+            <!-- Create button -->
             <button type="submit" class="btn btn-info" (click)="onPost()">Crear Cliente</button>
+            <!-- Get all button -->
             <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Clientes</button>
+            <!-- Get button -->
             <button type="submit" class="btn btn-info" (click)="onGet()">Obtener Cliente</button>
+            <!-- Delete button -->
             <button type="submit" class="btn btn-info" (click)="onDel()">Borrar Cliente</button>
         </div>
     </form>

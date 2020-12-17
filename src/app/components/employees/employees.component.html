@@ -10,28 +10,37 @@
 </nav>
 <!-- Form container -->
 <div class="container py-3">
+    <!-- Section title -->
     <h1 class="text-center">Employee<small> CRUD</small></h1>
     <div class="btn-group my-2" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info" [routerLink]="['/operation']">Volver</button>
     </div>
     <form [formGroup]="employeeFormContent">
+        <!-- Id input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdId">Id</label>
             <input formControlName="id" type="text" class="form-control" placeholder="Enter employer id">
         </div>
+        <!-- Price input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdName">Name</label>
             <input formControlName="nombre" type="text" class="form-control" placeholder="Enter employer name">
         </div>
+        <!-- Surname input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdPrice">Surname</label>
             <input formControlName="apellido" type="text" class="form-control" placeholder="Enter employer surname">
         </div>
-
+        
+        <!-- Button group -->
         <div class="btn-group flex-wrap">
+        <!-- Create button -->
             <button type="submit" class="btn btn-info" (click)="onPost()">Crear Empleado</button>
+            <!-- Get all button -->
             <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Empleados</button>
+            <!-- Get button -->
             <button type="submit" class="btn btn-info" (click)="onGet()">Obtener Empleado</button>
+            <!-- Delete button -->
             <button type="submit" class="btn btn-info" (click)="onDel()">Borrar Empleado</button>
         </div>
     </form>
@@ -48,13 +57,13 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- One product arrays -->
+                <!-- One employee arrays -->
                 <tr>
                     <th scope="row">{{ employee.id }}</th>
                     <td>{{ employee.empName }}</td>
                     <td>{{ employee.empSurname }}</td>
                 </tr>
-                <!-- Many product arrays -->
+                <!-- Many employee arrays -->
                 <tr *ngFor="let emp of employees">
                     <th scope="row">{{ emp.id }}</th>
                     <td>{{ emp.empName }}</td>

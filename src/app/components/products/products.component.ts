@@ -30,6 +30,9 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  // Product CRUD calling service method which use endpoint for get and give data
+
+  //Create product function
   onPost() {
     this.product.prdName = this.productFormContent.get('nombre').value;
     this.product.prdPrice = +this.productFormContent.get('precio').value;
@@ -43,27 +46,36 @@ export class ProductsComponent implements OnInit {
     this.productFormContent.reset();
   }
   
-
+  
+  //Get all product function
   async onGets() {
     this.products = await this.prdService.getAllProduct()
     this.loading = false;
     this.productFormContent.reset();
   }
-
+  
+  //Get product function by id
   async onGet() {
     let id = this.productFormContent.get('id').value
     this.product = await this.prdService.getProduct(id);
     this.loading = false;
     this.productFormContent.reset();
   }
-
+  
+  //Delete product function by id
   onDel() {
     let id = this.productFormContent.get('id').value
-    alert(`¿Seguro que desea borrar el producto con id ${id}?`);
-    this.prdService.delProduct(id).subscribe((response) => {
+    let res = confirm(`¿Seguro que desea borrar el producto con id ${id}?`);
+
+    if (res) {
+      this.prdService.delProduct(id).subscribe((response) => {
       alert('!Producto Borrado!');
       console.log(response);
     });
+    } else {
+      alert('!Operación cancelada!');
+    }
+    
     this.loading = false;
     this.productFormContent.reset();
   }

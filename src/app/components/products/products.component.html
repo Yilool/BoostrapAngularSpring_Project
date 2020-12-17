@@ -10,28 +10,37 @@
 </nav>
 <!-- Form container -->
 <div class="container py-3">
+    <!-- Section title -->
     <h1 class="text-center">Product<small> CRUD</small></h1>
     <div class="btn-group my-2" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-info" [routerLink]="['/operation']">Volver</button>
     </div>
     <form [formGroup]="productFormContent">
+        <!-- Id input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdId">Id</label>
             <input formControlName="id" type="text" class="form-control" placeholder="Enter product id">
         </div>
+        <!-- Name input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdName">Name</label>
             <input formControlName="nombre" type="text" class="form-control" placeholder="Enter product name">
         </div>
+        <!-- Price input container -->
         <div class="form-group">
             <label class="font-weight-bold" for="prdPrice">Price</label>
             <input formControlName="precio" type="text" class="form-control" placeholder="Enter product name">
         </div>
-
+        
+        <!-- Button group -->
         <div class="btn-group flex-wrap">
+            <!-- Create button -->
             <button type="submit" class="btn btn-info" (click)="onPost()">Crear Producto</button>
+            <!-- Get all button -->
             <button type="submit" class="btn btn-primary" (click)="onGets()">Obtener Productos</button>
+            <!-- Get button -->
             <button type="submit" class="btn btn-info" (click)="onGet()">Obtener Producto</button>
+            <!-- Delete button -->
             <button type="submit" class="btn btn-info" (click)="onDel()">Borrar Producto</button>
         </div>
     </form>

@@ -29,11 +29,13 @@ export class EmployeesComponent implements OnInit {
       apellido: [''],
     });
   }
+  // Employee CRUD caling service method which use endpoint for get and give data
 
+  //Create employee function
   onPost() {
     this.employee.empName = this.employeeFormContent.get('nombre').value;
     this.employee.empSurname = this.employeeFormContent.get('apellido').value;
-
+    
     this.empService.postEmployee(this.employee).subscribe((response) => {
       alert('Empleado creado!');
       console.log(response);
@@ -43,13 +45,14 @@ export class EmployeesComponent implements OnInit {
     this.employeeFormContent.reset();
   }
   
-
+  //Get all employee function
   async onGets() {
     this.employees = await this.empService.getAllEmployee()
     this.loading = false;
     this.employeeFormContent.reset();
   }
-
+  
+  //Get employee function by id
   async onGet() {
     let id = this.employeeFormContent.get('id').value
     this.employee = await this.empService.getEmployee(id);
@@ -57,13 +60,19 @@ export class EmployeesComponent implements OnInit {
     this.employeeFormContent.reset();
   }
 
+  //Delete employee function by id
   onDel() {
     let id = this.employeeFormContent.get('id').value
-    alert(`¿Seguro que desea borrar el empleado con id ${id}?`);
-    this.empService.delEmployee(id).subscribe((response) => {
+    let res = confirm(`¿Seguro que desea borrar el empleado con id ${id}?`);
+
+    if (res) {
+      this.empService.delEmployee(id).subscribe((response) => {
       alert('!Empleado Borrado!');
       console.log(response);
     });
+    } else {
+      alert('!Operación cancelada!');
+    }
     
     this.loading = false;
     this.employeeFormContent.reset();

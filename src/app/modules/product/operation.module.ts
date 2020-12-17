@@ -8,18 +8,22 @@ import { CustomersComponent } from 'src/app/components/customers/customers.compo
 
 const routes: Routes = [
   { 
+    // route http://localhost:4200/operation for OperationComponents
     path: '',
     component: OperationComponent,
   },
   {
+    // route http://localhost:4200/operation/product for ProductsComponent
     path: 'product',
     component: ProductsComponent,
   },
   {
+    // route http://localhost:4200/operation/employee for EmployeesComponent
     path: 'employee',
     component: EmployeesComponent,
   },
   {
+    // route http://localhost:4200/operation/custom for CustomersComponent
     path: 'custom',
     component: CustomersComponent,
   }

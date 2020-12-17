@@ -29,7 +29,9 @@ export class CustomersComponent implements OnInit {
       apellido: [''],
     });
   }
+  // Custom CRUD caling service method which use endpoint for get and give data
 
+  //Create custom function
   onPost() {
     this.custom.cusName = this.customFormContent.get('nombre').value;
     this.custom.cusSurname = this.customFormContent.get('apellido').value;
@@ -43,27 +45,35 @@ export class CustomersComponent implements OnInit {
     this.customFormContent.reset();
   }
   
-
+  //Get all custom function
   async onGets() {
     this.customers = await this.cusService.getAllcustom();
     this.loading = false;
     this.customFormContent.reset();
   }
-
+  
+  //Get custom function by id
   async onGet() {
     let id = this.customFormContent.get('id').value
     this.custom = await this.cusService.getcustom(id);
     this.loading = false;
     this.customFormContent.reset();
   }
-
+  
+  //Delete custom function by id
   onDel() {
     let id = this.customFormContent.get('id').value
-    alert(`¿Seguro que desea borrar el cliente con id ${id}?`);
-    this.cusService.delcustom(id).subscribe((response) => {
+    let res = confirm(`¿Seguro que desea borrar el cliente con id ${id}?`);
+
+    if (res) {
+      this.cusService.delcustom(id).subscribe((response) => {
       alert('!Cliente Borrado!');
       console.log(response);
     });
+    } else {
+      alert('!Operación cancelada!');
+    }
+    
     this.loading = false;
     this.customFormContent.reset();
   }
