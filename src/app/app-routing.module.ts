@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     // route http://localhost:4200/operation for OperationComponents
     path: 'operation',
-    loadChildren: () => import('./modules/product/operation.module').then(m => m.OperationModule),
+    loadChildren: () => import('./components/operation/operation.module').then(m => m.OperationModule),
   },
   {
     // route http://localhost:4200/unknown for NotFoundComponent
